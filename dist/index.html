@@ -1,0 +1,17 @@
+<!DOCTYPE html> <html lang=en dir=ltr> <head> <meta charset=utf-8> <script src=./src/dom_node_handles.js></script> <script src=./src/index.js></script> <script src=./src/setup.js></script> <script src=./dist/main.js></script> </head> <body> <h1>DOMesticate</h1> <form> <input type=text class=user-input value=""> <button type=submit class=create-todo>Add Todo</button> </form> <ul class=todo-list></ul> <ul> <li>Hiii</li> </ul> <script> const addItem = () => {
+        $domesticate(".submit").on("click", e => {
+          e.preventDefault();
+          const value = document.querySelectorAll('.input').value;
+          if (value) {
+            $domesticate('.todo-list').append(
+              `<li class="list-item">
+                <span class="item">${value}</span>
+                <button class="delete">X</button>
+              </li>`);
+          }
+          document.querySelectorAll('.input').value = "";
+        });
+      };
+
+
+      $domesticate(() => { addItem() }); </script> <script type="text/javascript" src="main.js"></script></body> </html> 

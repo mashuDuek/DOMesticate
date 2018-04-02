@@ -79,8 +79,107 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\n//# sourceURL=webpack:///./src/index.js?");
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+// const DomNodeHandles = require('./dom_node_handles.js');
+
+var docReadyCallbacks = [];
+var docReady = false;
+
+window.$domesticate = function (arg) {
+  switch (typeof arg === "undefined" ? "undefined" : _typeof(arg)) {
+    case "function":
+      return registerCallback(arg);
+    case "string":
+      return nodesFromDom(arg);
+    case "object":
+      if (arg instanceof HTMLElement) {
+        return new DomNodeHandles([arg]);
+      }
+  }
+};
+
+$domesticate.extend = function (base) {
+  for (var _len = arguments.length, otherObjs = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    otherObjs[_key - 1] = arguments[_key];
+  }
+
+  otherObjs.forEach(function (obj) {
+    for (var prop in obj) {
+      base[prop] = obj[prop];
+    }
+  });
+  return base;
+};
+
+$domesticate.ajax = function (options) {
+  var request = new XMLHttpRequest();
+  var defaults = {
+    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+    method: "GET",
+    url: "",
+    success: function success() {},
+    error: function error() {},
+    data: {}
+  };
+  options = $domesticate.extend(defaults, options);
+  options.method = options.method.toUpperCase();
+
+  if (options.method === "GET") {
+    options.url += "?" + stringToQuery(options.data);
+  }
+
+  request.open(options.method, options.url, true);
+  request.onload = function (e) {
+    // Triggered when request.readyState === XMLHttpRequest.DONE ===  4
+    if (request.status === 200) {
+      options.success(request.response);
+    } else {
+      options.error(request.response);
+    }
+  };
+
+  request.send(JSON.stringify(options.data));
+};
+
+// helper
+function stringToQuery(obj) {
+  var result = "";
+  for (var prop in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, prop)) {
+      result += prop + "=" + obj[prop] + "&";
+    }
+  }
+  return result.substring(0, result.length - 1);
+}
+
+// helper
+function registerCallback(func) {
+  if (!docReady) {
+    docReadyCallbacks.push(func);
+  } else {
+    func();
+  }
+}
+
+// helper
+function nodesFromDom(selector) {
+  var nodes = document.querySelectorAll(selector);
+  var nodesArray = Array.from(nodes);
+  return new DomNodeHandles(nodesArray);
+}
+
+// setup listeners/callbacks once doc is ready
+document.addEventListener('DOMContentLoaded', function () {
+  docReady = true;
+  docReadyCallbacks.forEach(function (func) {
+    return func();
+  });
+});
 
 /***/ })
 
 /******/ });
+//# sourceMappingURL=main.js.map
