@@ -34,17 +34,13 @@ const completeItem = () => {
 };
 
 const initialize = () => {
-  const numOfElements = $domesticate('li').nodes.length;
-  let word = 'items';
-  if (numOfElements === 1) word = "item";
   $domesticate('.todo-list').append(
-    `<li class="first-child">You have ${numOfElements} ${word} left</li>`
+    `<li class="first-child">Your to-dos</li>`
   );
-};
 
-$domesticate(() => {
-  initialize();
   addItemToTodos();
   removeItemFromTodos();
   completeItem();
-});
+};
+
+$domesticate(() => { initialize(); });

@@ -1,6 +1,6 @@
 class Clock {
-  constructor(){
-    this.time = new Date();
+  constructor(time){
+    this.time = time;
 
     this.setup();
   }
@@ -18,13 +18,22 @@ class Clock {
     } else {
       seconds = this.time.getSeconds();
     }
+
+    let minutes;
+    if (this.time.getMinutes() < 10) {
+      minutes = `0${this.time.getMinutes()}`;
+    } else {
+      minutes = this.time.getMinutes();
+    }
+    
     const time = `
       <div class="time">
         <p class="hours">${this.time.getHours()} :</p>
-        <p class="minutes">${this.time.getMinutes()} :</p>
+        <p class="minutes">${minutes} :</p>
         <p class="seconds">${seconds}</p>
       </div>
     `;
+
     if (Boolean($domesticate('.clock').nodes[0])) {
       $domesticate('.clock').children().remove();
       $domesticate('.clock').append(time);
@@ -34,52 +43,3 @@ class Clock {
     setInterval(this.tick.bind(this), 1000);
   }
 }
-
-// export default class Clock extends React.Component {
-//
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       time: new Date()
-//     };
-//     this.tick = this.tick.bind(this);
-//   }
-//
-//   componentDidMount() {
-//     this.intervalId = setInterval(this.tick, 1000);
-//   }
-//
-//   componentWillUnmount() {
-//     clearInterval(this.intervalId);
-//   }
-//
-//   tick() {
-//     this.setState({time: new Date()});
-//   }
-//
-//   render() {
-//     let hours = this.state.time.getHours();
-//     let minutes = this.state.time.getMinutes();
-//     let seconds = this.state.time.getSeconds();
-//
-//     hours = (hours < 10) ? `0${hours}` : hours;
-//     minutes = (minutes < 10) ? `0${minutes}` : minutes;
-//     seconds = (seconds < 10) ? `0${seconds}` : seconds;
-//
-//     return (
-//       <div>
-//         <h1>Clock</h1>
-//         <div className='clock'>
-//           <p><span>
-//                Time:
-//              </span>
-//              <span>
-//                {hours}:{minutes}:{seconds} PDT
-//              </span>
-//           </p>
-//           <p>Date: {this.state.time.toDateString()}</p>
-//         </div>
-//       </div>
-//     );
-//   }
-// };
