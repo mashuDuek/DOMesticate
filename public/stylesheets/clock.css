@@ -1,3 +1,22 @@
 .time {
-  background-color: red;
+  background-color: #EA5959;
+  padding: 50px;
+  font-size: 25px;
+  margin: 30px;
+  display: flex;
+  flex-direction: row;
+  border-radius: 5px;
+  border: 1px solid lightblue;
+}
+
+.time .seconds {
+  margin: 5px;
+  margin-left: 3px;
+}
+
+.time .minutes {
+  margin: 5px;
+}
+.time .hours {
+  margin: 5px;
 }

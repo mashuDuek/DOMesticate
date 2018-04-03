@@ -12,23 +12,25 @@
     <link rel="stylesheet" href="./public/stylesheets/todos.css" />
     <link rel="stylesheet" href="./public/stylesheets/weather.css" />
     <link rel="stylesheet" href="./public/stylesheets/clock.css" />
+    <link rel="stylesheet" href="./public/stylesheets/widgets.css" />
 
   </head>
   <body>
-    <h1>DOMesticate</h1>
-    <div>
-      <form class="form">
-        <input type="text" class="user-input" placeholder="add a to-do">
-        <button type="submit" class="create-todo">Add Todo</button>
-      </form>
-      <ul class="todo-list"></ul>
+    <div class="widgets">
+      <div>
+        <form class="form">
+          <input type="text" class="user-input" placeholder="add a to-do">
+          <button type="submit" class="create-todo">Add Todo</button>
+        </form>
+        <ul class="todo-list"></ul>
+      </div>
+
+
+      <div class="clock"></div>
+
+      <script type="text/javascript">
+      // new Clock();
+      </script>
     </div>
-
-    <div class="weather"></div>
-    <div class="clock"></div>
-
-    <script type="text/javascript">
-    new Clock();
-    </script>
   </body>
 </html>
