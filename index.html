@@ -6,19 +6,29 @@
     <script type="text/javascript" src="./dist/require.js"></script>
     <script type="text/javascript" src="./src/dom_node_handles.js"></script>
     <script type="text/javascript" src="./src/index.js"></script>
-    <script type="text/javascript" src="./src/setup.js"></script>
-    <link rel="stylesheet" href="./public/stylesheets/styles.css" />
+    <script type="text/javascript" src="./src/todo_setup.js"></script>
+    <script type="text/javascript" src="./src/weather_setup.js"></script>
+    <script type="text/javascript" src="./src/clock_setup.js"></script>
+    <link rel="stylesheet" href="./public/stylesheets/todos.css" />
+    <link rel="stylesheet" href="./public/stylesheets/weather.css" />
+    <link rel="stylesheet" href="./public/stylesheets/clock.css" />
 
   </head>
   <body>
     <h1>DOMesticate</h1>
+    <div>
+      <form class="form">
+        <input type="text" class="user-input" placeholder="add a to-do">
+        <button type="submit" class="create-todo">Add Todo</button>
+      </form>
+      <ul class="todo-list"></ul>
+    </div>
 
-    <form class="form">
-      <input type="text" class="user-input" placeholder="add a to-do">
-      <button type="submit" class="create-todo">Add Todo</button>
-    </form>
+    <div class="weather"></div>
+    <div class="clock"></div>
 
-    <ul class="todo-list"></ul>
-
+    <script type="text/javascript">
+    new Clock();
+    </script>
   </body>
 </html>
