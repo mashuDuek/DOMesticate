@@ -3,5 +3,11 @@
   height: fit-content;
   border: 1px solid lightyellow;
   border-radius: 5px;
-  padding: 15px;
+  padding: 20px;
+}
+
+.weather-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

@@ -25,11 +25,11 @@ class Clock {
     } else {
       minutes = this.time.getMinutes();
     }
-    
+
     const time = `
       <div class="time">
-        <p class="hours">${this.time.getHours()} :</p>
-        <p class="minutes">${minutes} :</p>
+        <p class="hours">${this.time.getHours()}:</p>
+        <p class="minutes">${minutes}:</p>
         <p class="seconds">${seconds}</p>
       </div>
     `;

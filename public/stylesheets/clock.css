@@ -1,6 +1,7 @@
 .time {
   background-color: #EA5959;
-  padding: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
   font-size: 15px;
   display: flex;
   flex-direction: row;
@@ -8,7 +9,7 @@
   justify-content: center;
   border-radius: 5px;
   border: 1px solid lightblue;
-  width: 15%;
+  width: fit-content;
 }
 
 .clock {

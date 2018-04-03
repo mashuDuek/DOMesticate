@@ -28,7 +28,7 @@ class Weather {
     const today = result.item.condition;
 
     const weatherHtml = `
-      <div>
+      <div class="weather-wrapper">
         <p class="weather-city"></p>
         <p class="weather-date"></p>
         <p class="weather-text"></p>
@@ -43,9 +43,9 @@ class Weather {
     $domesticate('.weather-city').html(result.location.city);
     $domesticate('.weather-date').html(today.date);
     $domesticate('.weather-text').html(today.text);
-    $domesticate('.weather-temp').html(`farenheit: ${today.temp}`);
-    $domesticate('.weather-wind').html(`winds: ${result.wind.speed}`);
-    $domesticate('.weather-humid').html(`humidity: ${result.atmosphere.humidity}`);
+    $domesticate('.weather-temp').html(`temperature: ${today.temp} F`);
+    $domesticate('.weather-wind').html(`winds: ${result.wind.speed} mhp`);
+    $domesticate('.weather-humid').html(`humidity: ${result.atmosphere.humidity}%`);
     $domesticate('.weather-img').attr(
       'src',
       `https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/${today.code}d.png`
