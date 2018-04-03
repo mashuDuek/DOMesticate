@@ -1,0 +1,93 @@
+body {
+  background-image: url('../new-background.jpg');
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.form {
+  background-color: #EA5959;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 300px;
+  padding: 20px;
+  border-radius: 5px;
+  border: 2px solid lightblue;
+}
+
+.user-input {
+  margin: auto;
+  margin-bottom: 15px;
+  height: 20px;
+  border-radius: 3px;
+  border: 1px solid #EA5959;
+  width: 200px;
+  font-size: 14px;
+}
+
+.user-input:focus {
+  border: 1px solid lightblue;
+  transition-duration: 1s;
+  width: 300px;
+}
+
+.create-todo {
+  width: 100px;
+  margin: auto;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 2px;
+  height: 40px;
+}
+
+.create-todo:hover {
+  height: 40px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #FAC6C6;
+  border-radius: 5px;
+  transition-duration: .2s;
+}
+
+.todo-list {
+  width: 300px;
+  margin: auto;
+  margin-top: 15px;
+  padding: 20px;
+  background-color: lightblue;
+  border-radius: 5px;
+  border: 2px solid lightyellow;
+}
+
+.first-child {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.list-item {
+  margin: 10px;
+  border-radius: 4px;
+  margin: auto;
+  padding: 10px;
+  border: 1px solid black;
+  font-size: 14px;
+}
+
+.complete-item:hover {
+  cursor: pointer;
+}
+
+.delete:hover {
+  cursor: pointer;
+  background-color: #FAC6C6;
+  transition-duration: .2s;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+}

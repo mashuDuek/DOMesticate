@@ -7,40 +7,20 @@
     <script type="text/javascript" src="./src/dom_node_handles.js"></script>
     <script type="text/javascript" src="./src/index.js"></script>
     <script type="text/javascript" src="./src/setup.js"></script>
+    <link rel="stylesheet" href="./public/stylesheets/styles.css" />
 
   </head>
   <body>
     <h1>DOMesticate</h1>
 
     <form class="form">
-      <input type="text" class="user-input" value="">
+      <input type="text" class="user-input" placeholder="add a to-do">
       <button type="submit" class="create-todo">Add Todo</button>
     </form>
 
-    <ul class="todo-list"></ul>
-    <ul>
-      <li>Hiii</li>
+    <ul class="todo-list">
+      <li class="first-child">Your list</li>
     </ul>
-
-    <!-- <script type="text/javascript">
-      const addItem = () => {
-        $domesticate(".submit").on("click", e => {
-          e.preventDefault();
-          const value = document.querySelectorAll('.input').value;
-          if (value) {
-            $domesticate('.todo-list').append(
-              `<li class="list-item">
-                <span class="item">${value}</span>
-                <button class="delete">X</button>
-              </li>`);
-          }
-          document.querySelectorAll('.input').value = "";
-        });
-      };
-
-
-      $domesticate(() => { addItem() });
-    </script> -->
 
   </body>
 </html>
