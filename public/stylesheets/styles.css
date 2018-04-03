@@ -70,22 +70,37 @@ h1 {
 }
 
 .list-item {
-  margin: 10px;
   border-radius: 4px;
-  margin: auto;
   padding: 10px;
   border: 1px solid black;
+  font-size: 17px;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.delete {
   font-size: 14px;
+  border-radius: 2px;
+  height: 20px;
+}
+
+.delete:hover {
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #FAC6C6;
+  border-radius: 5px;
+  transition-duration: .2s;
+}
+
+.list-item:hover {
+  background-color: #FAC6C6;
+  transition-duration: .5s;
 }
 
 .complete-item:hover {
   cursor: pointer;
-}
-
-.delete:hover {
-  cursor: pointer;
-  background-color: #FAC6C6;
-  transition-duration: .2s;
 }
 
 .strikethrough {
