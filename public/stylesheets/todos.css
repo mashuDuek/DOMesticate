@@ -1,15 +1,8 @@
-h1 {
-  display: flex;
-  justify-content: center;
-  margin-top: 100px;
-}
-
 .form {
-  background-color: #EA5959;
+  background-image: url('../notepad.jpg');
   display: flex;
   flex-direction: column;
-  margin: auto;
-  width: 300px;
+  width: 50%;
   padding: 20px;
   border-radius: 5px;
   border: 2px solid lightblue;
@@ -20,15 +13,15 @@ h1 {
   margin-bottom: 15px;
   height: 20px;
   border-radius: 3px;
-  border: 1px solid #EA5959;
-  width: 200px;
   font-size: 14px;
+  border: 1px solid lightyellow;
+  width: 40%;
 }
 
 .user-input:focus {
+  width: 80%;
   border: 1px solid lightblue;
   transition-duration: 1s;
-  width: 300px;
 }
 
 .create-todo {
@@ -50,8 +43,7 @@ h1 {
 }
 
 .todo-list {
-  width: 300px;
-  margin: auto;
+  width: 50%;
   margin-top: 15px;
   padding: 20px;
   background-color: lightblue;
@@ -95,10 +87,19 @@ h1 {
   transition-duration: .5s;
 }
 
+.item {
+  transition-duration: .5s;
+}
+
 .complete-item:hover {
   cursor: pointer;
 }
 
 .strikethrough {
   text-decoration: line-through;
+  font-size: 13px;
+}
+
+.form-and-list {
+  width: -webkit-fill-available;
 }

@@ -20,7 +20,7 @@ const addItemToTodos = () => {
 const removeItemFromTodos = () => {
   $domesticate(".todo-list").on("click", e => {
     if ($domesticate(e.target).attr("class") === "delete") {
-      $domesticate(e.target).parent().remove();
+      $domesticate(e.target).parent().parent().remove();
     }
   });
 };
@@ -28,7 +28,7 @@ const removeItemFromTodos = () => {
 const completeItem = () => {
   $domesticate(".todo-list").on("click", e => {
     if ($domesticate(e.target).attr("class") === "complete-item") {
-      $domesticate(e.target).parent().parent().toggleClass('strikethrough');
+      $domesticate(e.target).parent().parent().find('.item').toggleClass('strikethrough');
     }
   });
 };
