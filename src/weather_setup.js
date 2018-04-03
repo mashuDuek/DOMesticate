@@ -30,7 +30,7 @@ class Weather {
     const weatherHtml = `
       <div>
         <p class="weather-city"></p>
-        <p class="wetaher-date"></p>
+        <p class="weather-date"></p>
         <p class="weather-text"></p>
         <img class="weather-img"></img>
         <p class="weather-temp"></p>
@@ -43,10 +43,13 @@ class Weather {
     $domesticate('.weather-city').html(result.location.city);
     $domesticate('.weather-date').html(today.date);
     $domesticate('.weather-text').html(today.text);
-    $domesticate('.weather-img').attr('src', `https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/${today.code}d.png`);
-    $domesticate('.weather-temp').html(today.temp);
-    $domesticate('.weather-humid').html(result.atmosphere.humidity);
-    $domesticate('.weather-wind').html(result.wind.speed);
+    $domesticate('.weather-temp').html(`farenheit: ${today.temp}`);
+    $domesticate('.weather-wind').html(`winds: ${result.wind.speed}`);
+    $domesticate('.weather-humid').html(`humidity: ${result.atmosphere.humidity}`);
+    $domesticate('.weather-img').attr(
+      'src',
+      `https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/${today.code}d.png`
+    );
 
     // forecast.forEach( (f, i) => {
     //   if (i > 7 ) return;
