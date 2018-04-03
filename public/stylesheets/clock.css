@@ -1,25 +1,14 @@
 .time {
   background-color: #EA5959;
-  padding: 20px;
-  font-size: 20px;
+  padding: 5px;
+  font-size: 15px;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
   border-radius: 5px;
   border: 1px solid lightblue;
   width: 15%;
-}
-
-.time .seconds {
-  margin: 5px;
-  margin-left: 3px;
-}
-
-.time .minutes {
-  margin: 5px;
-}
-
-.time .hours {
-  margin: 5px;
 }
 
 .clock {

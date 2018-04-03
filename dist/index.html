@@ -1,17 +1,43 @@
-<!DOCTYPE html> <html lang=en dir=ltr> <head> <meta charset=utf-8> <script src=./src/dom_node_handles.js></script> <script src=./src/index.js></script> <script src=./src/setup.js></script> <script src=./dist/main.js></script> </head> <body> <h1>DOMesticate</h1> <form> <input type=text class=user-input value=""> <button type=submit class=create-todo>Add Todo</button> </form> <ul class=todo-list></ul> <ul> <li>Hiii</li> </ul> <script> const addItem = () => {
-        $domesticate(".submit").on("click", e => {
-          e.preventDefault();
-          const value = document.querySelectorAll('.input').value;
-          if (value) {
-            $domesticate('.todo-list').append(
-              `<li class="list-item">
-                <span class="item">${value}</span>
-                <button class="delete">X</button>
-              </li>`);
-          }
-          document.querySelectorAll('.input').value = "";
-        });
-      };
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
 
+    <script type="text/javascript" src="./dist/require.js"></script>
+    <script type="text/javascript" src="./src/dom_node_handles.js"></script>
+    <script type="text/javascript" src="./src/index.js"></script>
+    <script type="text/javascript" src="./src/todo_setup.js"></script>
+    <script type="text/javascript" src="./src/weather_setup.js"></script>
+    <script type="text/javascript" src="./src/clock_setup.js"></script>
+    <link rel="stylesheet" href="./public/stylesheets/todos.css" />
+    <link rel="stylesheet" href="./public/stylesheets/weather.css" />
+    <link rel="stylesheet" href="./public/stylesheets/clock.css" />
+    <link rel="stylesheet" href="./public/stylesheets/widgets.css" />
 
-      $domesticate(() => { addItem() }); </script> <script type="text/javascript" src="main.js"></script></body> </html> 
+  </head>
+  <body>
+    <div class="widgets">
+
+      <div class="clock"></div>
+
+      <div class="todo-and-weather">
+        <div class="form-and-list">
+          <form class="form">
+            <input type="text" class="user-input" placeholder="add a to-do">
+            <button type="submit" class="create-todo">Add Todo</button>
+          </form>
+          <ul class="todo-list"></ul>
+        </div>
+
+        <div class="weather">
+        </div>
+
+      </div>
+
+      <script type="text/javascript">
+        new Clock(new Date);
+        new Weather();
+      </script>
+    </div>
+  <script type="text/javascript" src="main.js"></script></body>
+</html>

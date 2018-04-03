@@ -1,4 +1,7 @@
 .weather {
   background-image: url('../new-back.png');
   height: fit-content;
+  border: 1px solid lightyellow;
+  border-radius: 5px;
+  padding: 15px;
 }
