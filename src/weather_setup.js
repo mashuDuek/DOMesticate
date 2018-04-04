@@ -16,10 +16,7 @@ class Weather {
         res = JSON.parse(res);
         this.render(res);
       }
-    });//.then(res => {
-    //   res = JSON.parse(res);
-    //   render(res);
-    // });
+    });
   }
 
   render (res) {
@@ -37,12 +34,13 @@ class Weather {
         <p class="weather-humid"></p>
         <p class="weather-wind"></p>
       </div>
+      <ul class="forecast-wrapper">
+      </ul>
     `;
     $domesticate('.weather').append(weatherHtml);
 
     $domesticate('.weather-city').html(result.location.city);
     $domesticate('.weather-date').html(today.date);
-    $domesticate('.weather-text').html(today.text);
     $domesticate('.weather-temp').html(`temperature: ${today.temp} F`);
     $domesticate('.weather-wind').html(`winds: ${result.wind.speed} mhp`);
     $domesticate('.weather-humid').html(`humidity: ${result.atmosphere.humidity}%`);
@@ -50,13 +48,23 @@ class Weather {
       'src',
       `https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/${today.code}d.png`
     );
-
-    // forecast.forEach( (f, i) => {
-    //   if (i > 7 ) return;
-    //   $l(`#forecast-day-${i}`).html(f.day);
-    //   $l(`#forecast-high-${i}`).html(f.high);
-    //   $l(`#forecast-low-${i}`).html(f.low);
-    //   $l(`#img-${i}`).attr('src', `https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/${f.code}d.png`);
-    // });
+    
+    forecast.forEach( (fore, i) => {
+      if (i > 7 ) return;
+      const forecast = `
+        <li>
+          <p>${fore.day}</p>
+          <div class="day-forecast">
+            <p>${fore.high}F</p>
+            <p>${fore.low}F</p>
+          </div>
+        </li>
+      `;
+      $domesticate('.forecast-wrapper').append(forecast);
+      // $domesticate(`.forecast-day-${i}`).html(f.day);
+      // $domesticate(`.forecast-high-${i}`).html(f.high);
+      // $domesticate(`.forecast-low-${i}`).html(f.low);
+      // $domesticate(`.img-${i}`).attr('src', `https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/${f.code}d.png`);
+    });
   }
 }

@@ -11,3 +11,24 @@
   flex-direction: column;
   align-items: center;
 }
+
+.forecast-wrapper {
+  display: flex;
+  flex-direction: row;
+  padding: 0px;
+}
+
+.forecast-wrapper li {
+  list-style: none;
+  border: .5px solid lightblue;
+}
+
+.weather-wrapper img {
+  margin-left: 80px;
+  margin-top: -50px;
+  margin-bottom: -50px;
+}
+
+.day-forecast {
+  margin: 5px;
+}
