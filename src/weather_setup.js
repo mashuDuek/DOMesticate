@@ -48,7 +48,7 @@ class Weather {
       'src',
       `https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/${today.code}d.png`
     );
-    
+
     forecast.forEach( (fore, i) => {
       if (i > 7 ) return;
       const forecast = `
@@ -61,10 +61,6 @@ class Weather {
         </li>
       `;
       $domesticate('.forecast-wrapper').append(forecast);
-      // $domesticate(`.forecast-day-${i}`).html(f.day);
-      // $domesticate(`.forecast-high-${i}`).html(f.high);
-      // $domesticate(`.forecast-low-${i}`).html(f.low);
-      // $domesticate(`.img-${i}`).attr('src', `https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/${f.code}d.png`);
     });
   }
 }
