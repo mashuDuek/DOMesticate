@@ -9,17 +9,19 @@
 .user-input {
   margin: auto;
   margin-bottom: 15px;
-  height: 20px;
+  height: 40px;
   border-radius: 3px;
-  font-size: 14px;
+  font-size: x-large;
   border: 1px solid lightyellow;
-  width: 40%;
+  width: 60%;
+  background-color: lightyellow;
+  padding-left: 10px;
 }
 
 .user-input:focus {
-  width: 80%;
+  background-color: white;
   border: 1px solid lightblue;
-  transition-duration: 1s;
+  transition-duration: .1s;
 }
 
 .create-todo {
@@ -93,9 +95,9 @@
   cursor: pointer;
 }
 
-.strikethrough {
+.finished {
   text-decoration: line-through;
-  font-size: 13px;
+  font-size: 16px;
 }
 
 .form-and-list {

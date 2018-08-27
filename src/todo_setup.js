@@ -1,4 +1,4 @@
-const addItemToTodos = () => {
+const addItem = () => {
   $domesticate(".form").on("submit", e => {
     e.preventDefault();
     const value = document.querySelectorAll('.user-input')[0].value;
@@ -17,7 +17,7 @@ const addItemToTodos = () => {
   });
 };
 
-const removeItemFromTodos = () => {
+const removeItem = () => {
   $domesticate(".todo-list").on("click", e => {
     if ($domesticate(e.target).attr("class") === "delete") {
       $domesticate(e.target).parent().parent().remove();
@@ -28,18 +28,18 @@ const removeItemFromTodos = () => {
 const completeItem = () => {
   $domesticate(".todo-list").on("click", e => {
     if ($domesticate(e.target).attr("class") === "complete-item") {
-      $domesticate(e.target).parent().parent().find('.item').toggleClass('strikethrough');
+      $domesticate(e.target).parent().parent().find('.item').toggleClass('finished');
     }
   });
 };
 
 const initialize = () => {
   $domesticate('.todo-list').append(
-    `<li class="first-child">Your to-dos</li>`
+    `<p class="first-child">Your to-dos</p>`
   );
 
-  addItemToTodos();
-  removeItemFromTodos();
+  addItem();
+  removeItem();
   completeItem();
 };
 
