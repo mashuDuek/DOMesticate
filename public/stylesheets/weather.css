@@ -1,5 +1,5 @@
 .weather {
-  background-image: url('../new-back.png');
+  background-image: url('../background.jpg');
   height: fit-content;
   border: 1px solid lightyellow;
   border-radius: 5px;
@@ -10,9 +10,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: white;
 }
 
 .forecast-wrapper {
+  color: white;
   display: flex;
   flex-direction: row;
   padding: 0px;
