@@ -11,6 +11,6 @@ body {
 .todo-and-weather {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   margin-top: 30px;
 }

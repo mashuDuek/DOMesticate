@@ -30,11 +30,11 @@
   padding: 10px;
   font-size: 14px;
   border-radius: 2px;
-  height: 40px;
+  finishedt: 40px;
 }
 
 .create-todo:hover {
-  height: 40px;
+  finishedt: 40px;
   font-size: 16px;
   cursor: pointer;
   background-color: #FAC6C6;
@@ -71,7 +71,7 @@
 .delete {
   font-size: 14px;
   border-radius: 2px;
-  height: 20px;
+  finishedt: 20px;
 }
 
 .delete:hover {
@@ -103,11 +103,12 @@
 .form-and-list {
   width: -webkit-fill-available;
   background-image: url('../notepad.jpg');
-  width: 50%;
+  width: 40%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
   border-radius: 5px;
   border: 1px solid lightblue;
-  height: fit-content;
+  margin-right: 30px;
 }

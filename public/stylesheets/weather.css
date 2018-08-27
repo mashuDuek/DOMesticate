@@ -4,6 +4,11 @@
   border: 1px solid lightyellow;
   border-radius: 5px;
   padding: 20px;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .weather-wrapper {
@@ -11,6 +16,16 @@
   flex-direction: column;
   align-items: center;
   color: white;
+  background-color: black;
+  opacity: 0.7;
+  border: 2px solid black;
+  border-radius: 80px;
+}
+
+.weather-wrapper p {
+  background-color: transparent;
+  font-size: 17px;
+  margin: 0px;
 }
 
 .forecast-wrapper {
@@ -27,8 +42,8 @@
 
 .weather-wrapper img {
   margin-left: 80px;
-  margin-top: -50px;
-  margin-bottom: -50px;
+  margin-top: -2px;
+  margin-bottom: -60px;
 }
 
 .day-forecast {

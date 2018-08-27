@@ -41,9 +41,9 @@ class Weather {
 
     $domesticate('.weather-city').html(result.location.city);
     $domesticate('.weather-date').html(today.date);
-    $domesticate('.weather-temp').html(`temperature: ${today.temp} F`);
-    $domesticate('.weather-wind').html(`winds: ${result.wind.speed} mhp`);
-    $domesticate('.weather-humid').html(`humidity: ${result.atmosphere.humidity}%`);
+    $domesticate('.weather-temp').html(`Temperature: ${today.temp} F`);
+    $domesticate('.weather-wind').html(`Winds: ${result.wind.speed} mhp`);
+    $domesticate('.weather-humid').html(`Humidity: ${result.atmosphere.humidity}%`);
     $domesticate('.weather-img').attr(
       'src',
       `https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/${today.code}d.png`
