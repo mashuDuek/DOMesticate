@@ -1,3 +1,5 @@
+import { weatherAPI } from '../secrets.js';
+
 class Weather {
 
   constructor () {
@@ -6,12 +8,7 @@ class Weather {
 
   loadWeather () {
     $domesticate.ajax({
-      url: "https://query.yahooapis.com/v1/public/yql",
-      data: {
-        q: "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='manhattan, NY')",
-        format: "json",
-        env: "store://datatables.org/alltableswithkeys"
-      },
+      url: `http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=${weatherAPI}`,
       success: (res) => {
         res = JSON.parse(res);
         this.render(res);
@@ -50,7 +47,8 @@ class Weather {
     );
 
     forecast.forEach( (fore, i) => {
-      if (i > 7 ) return;
+      if (i > 7) return;
+
       const forecast = `
         <li>
           <p>${fore.day}</p>
@@ -60,6 +58,7 @@ class Weather {
           </div>
         </li>
       `;
+
       $domesticate('.forecast-wrapper').append(forecast);
     });
   }
