@@ -21,7 +21,6 @@ class GithubGrabber {
 
     grabRepos = (e) => {
         e.preventDefault();
-        // this.toggleLoading();
         this.turnOnLoading();
 
         $domesticate('.repo-list').nodes[0].innerText = '';
@@ -85,7 +84,6 @@ class GithubGrabber {
             $domesticate('.commits-list').append(item);
         })
         this.turnOffLoading();
-
     }
 
     turnOnLoading = () => {

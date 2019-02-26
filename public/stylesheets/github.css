@@ -11,7 +11,11 @@
     display: flex;
     width: 80%;
     justify-content: space-between;
+}
 
+.github .github-form button {
+    width: 6%;
+    font-size: 14px;
 }
 
 .github input{
@@ -51,6 +55,8 @@
 .repo-list .repo-item {
     text-decoration: underline;
     color: blue;
+    font-size: large;
+    margin: 5px;
 }
 
 .repo-list .repo-item:hover {
@@ -69,11 +75,18 @@
 }
 
 .repos-and-commits ul {
-    width: 50%;
     list-style: none;
 }
 
-.repos-and-commits .commits-list {
-    max-height: 500px; 
+.repo-list {
+    width: 30%;
+}
+
+.commits-list {
+    width: 70%;
+}
+
+.repos-and-commits ul {
+    max-height: 300px; 
     overflow-y: scroll;
 }
