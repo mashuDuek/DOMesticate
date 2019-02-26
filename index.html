@@ -11,21 +11,48 @@
     <link rel="stylesheet" href="./public/stylesheets/todos.css" />
     <link rel="stylesheet" href="./public/stylesheets/github.css" />
     <link rel="stylesheet" href="./public/stylesheets/widgets.css" />
+    <link rel="stylesheet" href="./public/stylesheets/project.css" />
     
   </head>
   <body>
     <div class="widgets">
+
+      <section class="top-bar">
+        <h2>Mashu Duek</h2>
+        <a href="https://github.com/mashuDuek">
+          <img class="gh-logo" src="./public/gh-logo3.jpg"/>
+        </a>
+        <a href="https://www.linkedin.com/in/matthew-duek/">
+          <img class="linked-in-logo" src="./public/linkedin-logo.png"/>
+        </a>
+      </section>
       
       <div class="todo-and-github">
-        <div class="form-and-list">
-          <form class="form">
-            <input type="text" class="user-input" placeholder="add a to-do">
-            <button type="submit" class="create-todo">+</button>
-          </form>
-          <ul class="todo-list"></ul>
-        </div>
+        <section class="todos">
+          <div class="form-and-list">
+            <h2>Todo List</h2>
+            <form class="form">
+              <input type="text" class="user-input" placeholder="add a to-do">
+              <button type="submit" class="create-todo">+</button>
+            </form>
+            <ul class="todo-list"></ul>
+          </div>
+        </section>
         
-        <div class="github">
+        <div class="github-wrapper">
+          <img src="./public/loading.gif" class="loading-wheel hidden"/>
+          <div class="github">
+            <h2>Github Repo Grabber</h2>
+            <form class="github-form">
+              <input class="github-input" type="text" placeholder="enter github username">
+              </input>
+              <button>Grab It!</button>
+            </form>
+            <div class="repos-and-commits">
+              <ul class="repo-list"></ul>
+              <ul class="commits-list"></ul>
+            </div>
+          </div>
         </div>
         
       </div>

@@ -8,11 +8,12 @@ const addItem = () => {
           <span class="item">${value}</span>
           <div>
             <button class="delete">X</button>
-            <input type="checkbox" class="complete-item"></input>
+            <button class="complete-item">done</input>
           </div>
         </li>`
       );
-    }
+    };
+    
     document.querySelectorAll('.user-input')[0].value = "";
   });
 };
@@ -28,6 +29,11 @@ const removeItem = () => {
 const completeItem = () => {
   $domesticate(".todo-list").on("click", e => {
     if ($domesticate(e.target).attr("class") === "complete-item") {
+      if ($domesticate(e.target).nodes[0].innerText === 'undo') {
+        $domesticate(e.target).nodes[0].innerText = 'done';
+      } else {
+        $domesticate(e.target).nodes[0].innerText = 'undo';
+      };
       $domesticate(e.target).parent().parent().find('.item').toggleClass('finished');
     }
   });

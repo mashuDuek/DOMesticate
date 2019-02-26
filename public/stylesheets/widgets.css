@@ -1,12 +1,12 @@
 .widgets {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  width: 100vw;
 }
 
 body {
-  font-family: arial black;
+  font-family: sans-serif;
+  padding: 0px;
+  margin: 0px;
 }
 
 .todo-and-github {
@@ -14,5 +14,4 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
 }

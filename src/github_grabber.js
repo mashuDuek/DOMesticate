@@ -5,26 +5,9 @@ class GithubGrabber {
     }
 
     start = () => {
-        const $github = $domesticate('.github');
-        this.addInput($github);
         this.addInputListener();
         this.addSubmitListener();
     }
-
-    addInput = ($el) => {
-        const input = (`
-            <form class="github-form">
-                <input 
-                    class="github-input"
-                    type="text" 
-                    placeholder="enter github username">
-                </input>
-                <button>Grab It!</button>
-            </form>
-        `);
-        
-        $el.append(input)
-    };
 
     addInputListener = () => {
         const $input = $domesticate('.github-input');
@@ -33,14 +16,20 @@ class GithubGrabber {
 
     addSubmitListener = () => {
         const $form = $domesticate('.github-form');
-        $form.on('submit', this.grabber);
+        $form.on('submit', this.grabRepos);
     };
 
-    grabber = (e) => {
+    grabRepos = (e) => {
         e.preventDefault();
+        // this.toggleLoading();
+        this.turnOnLoading();
+
+        $domesticate('.repo-list').nodes[0].innerText = '';
+        $domesticate('.commits-list').nodes[0].innerText = '';
+        
         $domesticate.ajax({
             url: `https://cors-anywhere.herokuapp.com/api.github.com/users/${this.username}/repos`,
-            error: (err) => {console.log(err)},
+            error: (err) => { this.addErrors('.repo-list', JSON.parse(err).message) },
             success: (res) => {
                 const response = JSON.parse(res);
                 this.renderRepos(response);
@@ -51,7 +40,64 @@ class GithubGrabber {
     renderRepos = (repos) => {
         const names = repos.map(repo => repo.name);
         names.forEach(name => {
-            $domesticate('.github').append(`<p>${name}</p>`);
+            const repo = `<li class="repo-item" value=${name}>${name}</li>`;
+            $domesticate('.repo-list').append(repo);
         });
+        this.turnOffLoading();
+        this.grabCommits();
     };
+
+    grabCommits = () => {
+        const repoList = $domesticate('.repo-list')
+        repoList.on('click', (e) => {
+
+            const repo = $domesticate(e.target).nodes[0].attributes.value['value'];
+            this.turnOnLoading();
+            $domesticate.ajax({
+                url: `https://cors-anywhere.herokuapp.com/api.github.com/repos/${this.username}/${repo}/commits`,
+                error: (err) => { this.addErrors('.commits-list', JSON.parse(err).message) },
+                success: (res) => {
+                    const response = JSON.parse(res);
+                    this.renderCommits(response);
+                }
+            });
+        });
+    }
+
+    months = () => ({ 
+        0: 'Jan', 1: 'Feb', 2: 'Mar', 3: 'Apr', 4: 'May', 5: 'Jun', 6: 'Jul', 7: 'Aug', 8: 'Sep', 9: 'Oct', 10: 'Nov', 11: 'Dec' 
+    });
+
+    renderCommits = (res) => {
+        $domesticate('.commits-list').nodes[0].innerText = '';
+        res.forEach(({ commit }) => {
+            const message = commit.message;
+            const email = commit.author.email;
+            const date = new Date(commit.author.date);
+            const formattedDate = `${this.months()[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+            const item = `
+                <li class="commit-item">
+                    <p>${formattedDate}</p>
+                    <p>${email}</p>
+                    <p>message: ${message}</p>
+                </li>
+            `;
+            $domesticate('.commits-list').append(item);
+        })
+        this.turnOffLoading();
+
+    }
+
+    turnOnLoading = () => {
+        $domesticate('.loading-wheel').removeClass('hidden');
+    }
+    
+    turnOffLoading = () => {
+        $domesticate('.loading-wheel').addClass('hidden');
+    }
+
+    addErrors = (className, message) => {
+        $domesticate(className).nodes[0].innerText = message;
+        this.turnOffLoading();
+    }
 }
