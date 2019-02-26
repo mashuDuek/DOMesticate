@@ -7,32 +7,33 @@
     <script type="text/javascript" src="./src/dom_node_handles.js"></script>
     <script type="text/javascript" src="./src/index.js"></script>
     <script type="text/javascript" src="./src/todo_setup.js"></script>
-    <script type="text/javascript" src="./src/weather_setup.js"></script>
+    <script type="text/javascript" src="./src/github_grabber.js"></script>
     <link rel="stylesheet" href="./public/stylesheets/todos.css" />
-    <link rel="stylesheet" href="./public/stylesheets/weather.css" />
+    <link rel="stylesheet" href="./public/stylesheets/github.css" />
     <link rel="stylesheet" href="./public/stylesheets/widgets.css" />
-
+    
   </head>
   <body>
     <div class="widgets">
-
-      <div class="todo-and-weather">
+      
+      <div class="todo-and-github">
         <div class="form-and-list">
           <form class="form">
             <input type="text" class="user-input" placeholder="add a to-do">
-            <button type="submit" class="create-todo">Add Todo</button>
+            <button type="submit" class="create-todo">+</button>
           </form>
           <ul class="todo-list"></ul>
         </div>
-
-        <div class="weather">
+        
+        <div class="github">
         </div>
-
+        
       </div>
-
+    
       <script type="text/javascript">
-        new Weather();
+        new GithubGrabber()
       </script>
     </div>
   </body>
-</html>
+  </html>
+  

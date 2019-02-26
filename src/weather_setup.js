@@ -1,5 +1,5 @@
-import { weatherAPI } from '../secrets.js';
-
+// var keys = import('./secrets.js');
+const weatherKey = '4a32c03b5b61a8f56efc26281ea63dab';
 class Weather {
 
   constructor () {
@@ -8,11 +8,12 @@ class Weather {
 
   loadWeather () {
     $domesticate.ajax({
-      url: `http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=${weatherAPI}`,
+      url: `https://weather-ydn-yql.media.yahoo.com/forecastrss?location=sunnyvale,ca&format=json`,
       success: (res) => {
         res = JSON.parse(res);
         this.render(res);
-      }
+      },
+      error: (arg) => {debugger}
     });
   }
 
@@ -34,6 +35,7 @@ class Weather {
       <ul class="forecast-wrapper">
       </ul>
     `;
+
     $domesticate('.weather').append(weatherHtml);
 
     $domesticate('.weather-city').html(result.location.city);

@@ -36,17 +36,32 @@
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, {
-/******/ 				configurable: false,
-/******/ 				enumerable: true,
-/******/ 				get: getter
-/******/ 			});
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
 /******/ 		}
 /******/ 	};
 /******/
 /******/ 	// define __esModule on exports
 /******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
 /******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
 /******/ 	};
 /******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
@@ -76,33 +91,32 @@
   !*** ./src/index.js ***!
   \**********************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 // const DomNodeHandles = require('./dom_node_handles.js');
-
 var docReadyCallbacks = [];
 var docReady = false;
 
 window.$domesticate = function (arg) {
-  switch (typeof arg === "undefined" ? "undefined" : _typeof(arg)) {
+  switch (_typeof(arg)) {
     case "function":
       return registerCallback(arg);
+
     case "string":
       return nodesFromDom(arg);
+
     case "object":
       if (arg instanceof HTMLElement) {
         return new DomNodeHandles([arg]);
       }
+
   }
 };
 
 $domesticate.extend = function (base) {
-  for (var _len = arguments.length, otherObjs = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+  for (var _len = arguments.length, otherObjs = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
     otherObjs[_key - 1] = arguments[_key];
   }
 
@@ -128,10 +142,14 @@ $domesticate.ajax = function (options) {
   options.method = options.method.toUpperCase();
 
   if (options.method === "GET") {
-    options.url += "?" + stringToQuery(options.data);
+    options.url += "?".concat(stringToQuery(options.data));
   }
 
   request.open(options.method, options.url, true);
+  request.setRequestHeader('Access-Control-Allow-Headers', '*');
+  request.setRequestHeader('Access-Control-Allow-Credentials', true);
+  request.setRequestHeader('Access-Control-Allow-Origin', '*');
+
   request.onload = function (e) {
     // Triggered when request.readyState === XMLHttpRequest.DONE ===  4
     if (request.status === 200) {
@@ -142,36 +160,38 @@ $domesticate.ajax = function (options) {
   };
 
   request.send(JSON.stringify(options.data));
-};
+}; // helper
 
-// helper
+
 function stringToQuery(obj) {
   var result = "";
+
   for (var prop in obj) {
     if (Object.prototype.hasOwnProperty.call(obj, prop)) {
-      result += prop + "=" + obj[prop] + "&";
+      result += "".concat(prop, "=").concat(obj[prop], "&");
     }
   }
-  return result.substring(0, result.length - 1);
-}
 
-// helper
+  return result.substring(0, result.length - 1);
+} // helper
+
+
 function registerCallback(func) {
   if (!docReady) {
     docReadyCallbacks.push(func);
   } else {
     func();
   }
-}
+} // helper
 
-// helper
+
 function nodesFromDom(selector) {
   var nodes = document.querySelectorAll(selector);
   var nodesArray = Array.from(nodes);
   return new DomNodeHandles(nodesArray);
-}
+} // setup listeners/callbacks once doc is ready
 
-// setup listeners/callbacks once doc is ready
+
 document.addEventListener('DOMContentLoaded', function () {
   docReady = true;
   docReadyCallbacks.forEach(function (func) {

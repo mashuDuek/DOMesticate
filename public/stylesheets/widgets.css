@@ -1,16 +1,18 @@
 .widgets {
   display: flex;
   flex-direction: column;
+  height: 100vh;
+  width: 100vw;
 }
 
 body {
-  background-image: url('../background-for-website-1.jpg');
   font-family: arial black;
 }
 
-.todo-and-weather {
+.todo-and-github {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   margin-top: 30px;
 }

@@ -1,4 +1,4 @@
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+// const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   module: {
@@ -6,17 +6,20 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader"
+        loader: "babel-loader",
+        query: {
+          presets: ['@babel/env']
         }
       }
     ]
   },
   devtool: "source-map",
-  plugins: [
-    new HtmlWebPackPlugin({
-      template: "./index.html",
-      filename: "./index.html"
-    })
-  ]
+  resolve: {
+    extensions: ['.js', '*']
+  }
 };
+
+// new HtmlWebPackPlugin({
+//   template: "./index.html",
+//   filename: "./index.html"
+// })

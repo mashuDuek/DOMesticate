@@ -1,1 +1,4 @@
-{ "presets": ["env"] }
+{ 
+    "presets": ["@babel/preset-env"],
+    "plugins": ["inline-react-svg"]
+ }

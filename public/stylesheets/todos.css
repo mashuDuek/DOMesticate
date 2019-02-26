@@ -1,54 +1,39 @@
-.form {
+.form-and-list {
+  width: 80%;
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  border-radius: 5px;
-  width: 100%;
+  align-items: center;
+  justify-content: space-around;
 }
 
-.user-input {
-  margin: auto;
-  margin-bottom: 15px;
-  height: 40px;
-  border-radius: 3px;
-  font-size: x-large;
-  border: 1px solid lightyellow;
-  width: 60%;
-  background-color: lightyellow;
+.form-and-list form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-and-list form input {
+  height: 85%;
+  min-height: 30px;
+  font-size: large;
+  border: 1px solid lightgray;
+  width: 85%;
   padding-left: 10px;
 }
 
-.user-input:focus {
-  background-color: white;
-  border: 1px solid lightblue;
-  transition-duration: .1s;
-}
-
-.create-todo {
-  width: 100px;
-  margin: auto;
-  padding: 10px;
+.form-and-list form button {
+  width: 10%;
   font-size: 14px;
-  border-radius: 2px;
-  finishedt: 40px;
 }
 
-.create-todo:hover {
-  finishedt: 40px;
-  font-size: 16px;
+.form-and-list form button:hover {
   cursor: pointer;
-  background-color: #FAC6C6;
-  border-radius: 5px;
-  transition-duration: .2s;
 }
 
 .todo-list {
-  width: 80%;
-  margin-top: 15px;
-  padding: 20px;
-  background-color: lightblue;
-  border-radius: 5px;
-  border: 2px solid lightyellow;
+  width: 100%;
+  padding: 0px;
+  border: 1px solid lightgray;
 }
 
 .first-child {
@@ -58,10 +43,8 @@
 }
 
 .list-item {
-  border-radius: 4px;
   padding: 10px;
   border: 1px solid black;
-  font-size: 17px;
   list-style: none;
   display: flex;
   flex-direction: row;
@@ -71,7 +54,6 @@
 .delete {
   font-size: 14px;
   border-radius: 2px;
-  finishedt: 20px;
 }
 
 .delete:hover {
@@ -98,17 +80,4 @@
 .finished {
   text-decoration: line-through;
   font-size: 16px;
-}
-
-.form-and-list {
-  width: -webkit-fill-available;
-  background-image: url('../notepad.jpg');
-  width: 40%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  border-radius: 5px;
-  border: 1px solid lightblue;
-  margin-right: 30px;
 }
