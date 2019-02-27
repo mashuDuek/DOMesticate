@@ -7,10 +7,15 @@
     padding: 20px 0;
 }
 
+.github h2 {
+    margin-top: 40px;
+}
+
 .github form {
     display: flex;
     width: 80%;
     justify-content: space-between;
+    margin: 40px;
 }
 
 .github .github-form button {

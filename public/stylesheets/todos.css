@@ -3,8 +3,13 @@ section.todos {
   display: flex;
   justify-content: center;
   background-color: #deb887;
-  padding-bottom: 30px;
   min-height: fit-content;
+  padding: 20px 0;
+  padding-bottom: 40px;
+}
+
+section.todos h2 {
+  margin-top: 40px;
 }
 
 .form-and-list {
@@ -19,6 +24,7 @@ section.todos {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  margin: 40px;
 }
 
 .form-and-list form input {
