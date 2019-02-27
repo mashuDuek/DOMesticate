@@ -18,7 +18,11 @@
     font-size: 14px;
 }
 
-.github input{
+.github .github-form button:hover {
+    cursor: pointer;
+}
+
+.github input {
     height: 85%;
     min-height: 30px;
     font-size: large;
@@ -42,7 +46,7 @@
 
 .loading-wheel {
     position: absolute;
-    top: 100px;
+    top: 75px;
 }
 
 .commit-item {
@@ -80,6 +84,7 @@
 
 .repo-list {
     width: 30%;
+    padding-left: 0px;
 }
 
 .commits-list {

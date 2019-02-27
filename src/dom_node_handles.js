@@ -33,9 +33,7 @@ class DomNodeHandles {
 
   html(html) {
     if (typeof html === "string") {
-      this.each((node) => {
-        node.innerHTML = html;
-      });
+      this.each((node) => node.innerHTML = html);
     } else if (this.nodes.length > 0) {
       return this.nodes[0].innerHTML;
     }
@@ -55,7 +53,7 @@ class DomNodeHandles {
     }
 
     if (typeof children === "string") {
-      this.each((node) => { node.innerHTML += children });
+      this.each((node) => node.innerHTML += children);
     } else if (children instanceof DomNodeHandles) {
       // You can't append the same child node to multiple parents,
       // so we must duplicate the child nodes here.

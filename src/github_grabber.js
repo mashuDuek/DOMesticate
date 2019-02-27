@@ -27,7 +27,7 @@ class GithubGrabber {
         $domesticate('.commits-list').nodes[0].innerText = '';
         
         $domesticate.ajax({
-            url: `https://cors-anywhere.herokuapp.com/api.github.com/users/${this.username}/repos`,
+            url: `http://api.github.com/users/${this.username}/repos`,
             error: (err) => { this.addErrors('.repo-list', JSON.parse(err).message) },
             success: (res) => {
                 const response = JSON.parse(res);
@@ -53,7 +53,7 @@ class GithubGrabber {
             const repo = $domesticate(e.target).nodes[0].attributes.value['value'];
             this.turnOnLoading();
             $domesticate.ajax({
-                url: `https://cors-anywhere.herokuapp.com/api.github.com/repos/${this.username}/${repo}/commits`,
+                url: `https://api.github.com/repos/${this.username}/${repo}/commits`,
                 error: (err) => { this.addErrors('.commits-list', JSON.parse(err).message) },
                 success: (res) => {
                     const response = JSON.parse(res);

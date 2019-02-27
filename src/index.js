@@ -44,9 +44,6 @@ $domesticate.ajax = (options) => {
   }
   
   request.open(options.method, options.url, true);
-  request.setRequestHeader('Access-Control-Allow-Headers', '*');
-  request.setRequestHeader('Access-Control-Allow-Credentials', true);
-  request.setRequestHeader('Access-Control-Allow-Origin', '*');
   request.onload = (e) => {
     // Triggered when request.readyState === XMLHttpRequest.DONE ===  4
     if (request.status === 200) {
