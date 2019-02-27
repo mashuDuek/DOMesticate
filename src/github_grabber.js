@@ -48,9 +48,10 @@ class GithubGrabber {
 
     grabCommits = () => {
         const repoList = $domesticate('.repo-list')
-        repoList.on('click', (e) => {
 
+        repoList.on('click', (e) => {
             const repo = $domesticate(e.target).nodes[0].attributes.value['value'];
+            
             this.turnOnLoading();
             $domesticate.ajax({
                 url: `https://api.github.com/repos/${this.username}/${repo}/commits`,
