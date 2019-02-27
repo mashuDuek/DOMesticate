@@ -27,7 +27,7 @@ class GithubGrabber {
         $domesticate('.commits-list').nodes[0].innerText = '';
         
         $domesticate.ajax({
-            url: `http://api.github.com/users/${this.username}/repos`,
+            url: `https://api.github.com/users/${this.username}/repos`,
             error: (err) => { this.addErrors('.repo-list', JSON.parse(err).message) },
             success: (res) => {
                 const response = JSON.parse(res);
