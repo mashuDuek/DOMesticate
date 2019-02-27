@@ -3,13 +3,11 @@ section.todos {
   display: flex;
   justify-content: center;
   background-color: #deb887;
-  min-height: fit-content;
-  padding: 20px 0;
-  padding-bottom: 40px;
+  height: 50%;
 }
 
 section.todos h2 {
-  margin-top: 40px;
+  margin: 10px;
 }
 
 .form-and-list {
@@ -24,12 +22,11 @@ section.todos h2 {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin: 40px;
+  height: 10%;
 }
 
 .form-and-list form input {
   height: 85%;
-  min-height: 30px;
   font-size: large;
   border: 1px solid lightgray;
   width: 85%;
@@ -49,6 +46,8 @@ section.todos h2 {
   width: 100%;
   padding: 0px;
   border: 1px solid lightgray;
+  height: 70%;
+  overflow-y: scroll;
 }
 
 .form-and-list ul li {
