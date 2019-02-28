@@ -16,11 +16,10 @@ class GithubGrabber {
 
     addSubmitListener() {
         const $form = $domesticate('.github-form');
-        $form.on('submit', (e) => {e.preventDefault();console.log(e); this.grabRepos(e)});
+        $form.on('submit', this.grabRepos.bind(this));
     };
 
     grabRepos(e) {
-        console.log(e)
         e.preventDefault();
         this.turnOnLoading();
         
@@ -28,7 +27,7 @@ class GithubGrabber {
         $domesticate('.commits-list').nodes[0].innerText = '';
         
         $domesticate.ajax({
-            url: `https://api.github.com/users/${this.username}/repos`,
+            url: `https://api.github.com/users/${this.username}/repos?type=all`,
             error: (err) => { this.addErrors('.repo-list', JSON.parse(err).message) },
             success: (res) => {
                 const response = JSON.parse(res);
