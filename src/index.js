@@ -1,9 +1,8 @@
-// const DomNodeHandles = require('./dom_node_handles.js');
-
+// const DomNodeHandles = require('./dom_node_handles.js')
 const docReadyCallbacks = [];
 let docReady = false;
 
-window.$domesticate = (arg) => {
+window.$domesticate = function(arg) {
   switch (typeof arg) {
     case "function":
       return registerCallback(arg);
@@ -16,8 +15,8 @@ window.$domesticate = (arg) => {
   }
 };
 
-$domesticate.extend = (base, ...otherObjs) => {
-  otherObjs.forEach((obj) => {
+$domesticate.extend = function(base, ...otherObjs) {
+  otherObjs.forEach(function(obj) {
     for (const prop in obj) {
       base[prop] = obj[prop];
     }
@@ -25,14 +24,14 @@ $domesticate.extend = (base, ...otherObjs) => {
   return base;
 };
 
-$domesticate.ajax = (options) => {
+$domesticate.ajax = function(options) {
   const request = new XMLHttpRequest();
   const defaults = {
     contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
     method: "GET",
     url: "",
-    success: () => {},
-    error: () => {},
+    success: function() {},
+    error: function() {},
     data: {},
   };
 
@@ -44,7 +43,7 @@ $domesticate.ajax = (options) => {
   }
   
   request.open(options.method, options.url, true);
-  request.onload = (e) => {
+  request.onload = function() {
     // Triggered when request.readyState === XMLHttpRequest.DONE ===  4
     if (request.status === 200) {
       options.success(request.response);
@@ -84,7 +83,7 @@ function nodesFromDom (selector) {
 }
 
 // setup listeners/callbacks once doc is ready
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
   docReady = true;
   docReadyCallbacks.forEach(func => func());
 });

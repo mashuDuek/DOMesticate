@@ -4,25 +4,26 @@ class GithubGrabber {
         this.start();
     }
 
-    start = () => {
+    start() {
         this.addInputListener();
         this.addSubmitListener();
     }
 
-    addInputListener = () => {
+    addInputListener() {
         const $input = $domesticate('.github-input');
         $input.on('change', (e) => this.username = e.target.value);
     };
 
-    addSubmitListener = () => {
+    addSubmitListener() {
         const $form = $domesticate('.github-form');
-        $form.on('submit', this.grabRepos);
+        $form.on('submit', (e) => {e.preventDefault();console.log(e); this.grabRepos(e)});
     };
 
-    grabRepos = (e) => {
+    grabRepos(e) {
+        console.log(e)
         e.preventDefault();
         this.turnOnLoading();
-
+        
         $domesticate('.repo-list').nodes[0].innerText = '';
         $domesticate('.commits-list').nodes[0].innerText = '';
         
@@ -36,7 +37,7 @@ class GithubGrabber {
         });
     };
 
-    renderRepos = (repos) => {
+    renderRepos(repos) {
         const names = repos.map(repo => repo.name);
         names.forEach(name => {
             const repo = `<li class="repo-item" value=${name}>${name}</li>`;
@@ -46,7 +47,7 @@ class GithubGrabber {
         this.grabCommits();
     };
 
-    grabCommits = () => {
+    grabCommits() {
         const repoList = $domesticate('.repo-list')
 
         repoList.on('click', (e) => {
@@ -64,11 +65,11 @@ class GithubGrabber {
         });
     }
 
-    months = () => ({ 
-        0: 'Jan', 1: 'Feb', 2: 'Mar', 3: 'Apr', 4: 'May', 5: 'Jun', 6: 'Jul', 7: 'Aug', 8: 'Sep', 9: 'Oct', 10: 'Nov', 11: 'Dec' 
-    });
+    months() { 
+      return { 0: 'Jan', 1: 'Feb', 2: 'Mar', 3: 'Apr', 4: 'May', 5: 'Jun', 6: 'Jul', 7: 'Aug', 8: 'Sep', 9: 'Oct', 10: 'Nov', 11: 'Dec' };
+    };
 
-    renderCommits = (res) => {
+    renderCommits(res) {
         $domesticate('.commits-list').nodes[0].innerText = '';
         res.forEach(({ commit }) => {
             const message = commit.message;
@@ -87,15 +88,15 @@ class GithubGrabber {
         this.turnOffLoading();
     }
 
-    turnOnLoading = () => {
+    turnOnLoading() {
         $domesticate('.loading-wheel').removeClass('hidden');
     }
     
-    turnOffLoading = () => {
+    turnOffLoading() {
         $domesticate('.loading-wheel').addClass('hidden');
     }
 
-    addErrors = (className, message) => {
+    addErrors(className, message) {
         $domesticate(className).nodes[0].innerText = message;
         this.turnOffLoading();
     }

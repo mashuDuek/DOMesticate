@@ -1,52 +1,56 @@
-const addItem = () => {
-  $domesticate(".form").on("submit", e => {
-    e.preventDefault();
-    const value = document.querySelectorAll('.user-input')[0].value;
-    if (value) {
-      $domesticate('.todo-list').append(
-        `<li class="list-item">
-          <span class="item">${value}</span>
-          <div>
-            <button class="delete">X</button>
-            <button class="complete-item">done</input>
-          </div>
-        </li>`
-      );
-    };
-    
-    document.querySelectorAll('.user-input')[0].value = "";
-  });
-};
-
-const removeItem = () => {
-  $domesticate(".todo-list").on("click", e => {
-    if ($domesticate(e.target).attr("class") === "delete") {
-      $domesticate(e.target).parent().parent().remove();
-    }
-  });
-};
-
-const completeItem = () => {
-  $domesticate(".todo-list").on("click", e => {
-    if ($domesticate(e.target).attr("class") === "complete-item") {
-      if ($domesticate(e.target).nodes[0].innerText === 'undo') {
-        $domesticate(e.target).nodes[0].innerText = 'done';
-      } else {
-        $domesticate(e.target).nodes[0].innerText = 'undo';
+class Todos {
+  constructor() {
+    $domesticate(this.initialize.bind(this));
+  }
+  
+  addItem() {
+    $domesticate(".form").on("submit", function(e) {
+      e.preventDefault();
+      const value = document.querySelectorAll('.user-input')[0].value;
+      if (value) {
+        $domesticate('.todo-list').append(
+          `<li class="list-item">
+            <span class="item">${value}</span>
+            <div>
+              <button class="delete">X</button>
+              <button class="complete-item">done</input>
+            </div>
+          </li>`
+        );
       };
-      $domesticate(e.target).parent().parent().find('.item').toggleClass('finished');
-    }
-  });
-};
+      
+      document.querySelectorAll('.user-input')[0].value = "";
+    });
+  };
 
-const initialize = () => {
-  $domesticate('.todo-list').append(
-    `<p class="first-child">Your to-dos</p>`
-  );
+  removeItem() {
+    $domesticate(".todo-list").on("click", function(e) {
+      if ($domesticate(e.target).attr("class") === "delete") {
+        $domesticate(e.target).parent().parent().remove();
+      }
+    });
+  };
 
-  addItem();
-  removeItem();
-  completeItem();
-};
+  completeItem() {
+    $domesticate(".todo-list").on("click", function(e) {
+      if ($domesticate(e.target).attr("class") === "complete-item") {
+        if ($domesticate(e.target).nodes[0].innerText === 'undo') {
+          $domesticate(e.target).nodes[0].innerText = 'done';
+        } else {
+          $domesticate(e.target).nodes[0].innerText = 'undo';
+        };
+        $domesticate(e.target).parent().parent().find('.item').toggleClass('finished');
+      }
+    });
+  };
 
-$domesticate(() => { initialize(); });
+  initialize() {
+    $domesticate('.todo-list').append(
+      `<p class="first-child">Your to-dos</p>`
+    );
+    
+    this.addItem();
+    this.removeItem();
+    this.completeItem();
+  };
+}
