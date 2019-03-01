@@ -27,7 +27,7 @@ class GithubGrabber {
         $domesticate('.commits-list').nodes[0].innerText = '';
         
         $domesticate.ajax({
-            url: `https://api.github.com/users/${this.username}/repos?type=all`,
+            url: `https://api.github.com/users/${this.username}/repos?type=all?per_page=100`,
             error: (err) => { this.addErrors('.repo-list', JSON.parse(err).message) },
             success: (res) => {
                 const response = JSON.parse(res);
@@ -37,11 +37,13 @@ class GithubGrabber {
     };
 
     renderRepos(repos) {
-        const names = repos.map(repo => repo.name);
-        names.forEach(name => {
-            const repo = `<li class="repo-item" value=${name}>${name}</li>`;
-            $domesticate('.repo-list').append(repo);
+        repos.forEach(repo => {
+            const rep = repo.owner.login === this.username ? 
+                `<li class="repo-item" value=${repo.name}>${repo.name}</li>` :
+                `<li class="non-owner-repo-item" value=${repo.name}>${repo.name}</li>`;
+            $domesticate('.repo-list').append(rep);
         });
+
         this.turnOffLoading();
         this.grabCommits();
     };
@@ -54,7 +56,7 @@ class GithubGrabber {
             
             this.turnOnLoading();
             $domesticate.ajax({
-                url: `https://api.github.com/repos/${this.username}/${repo}/commits`,
+                url: `https://api.github.com/repos/${this.username}/${repo}/commits?since=2010-01-01T01:01:01Z`,
                 error: (err) => { this.addErrors('.commits-list', JSON.parse(err).message) },
                 success: (res) => {
                     const response = JSON.parse(res);
@@ -82,6 +84,7 @@ class GithubGrabber {
                     <p>message: ${message}</p>
                 </li>
             `;
+            
             $domesticate('.commits-list').append(item);
         })
         this.turnOffLoading();

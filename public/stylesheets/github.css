@@ -65,6 +65,10 @@
     font-size: large;
     margin: 5px;
 }
+.repo-list .non-owner-repo-item {
+    font-size: large;
+    margin: 5px;
+}
 
 .repo-list .repo-item:hover {
     cursor: pointer;
