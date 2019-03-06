@@ -1,9 +1,9 @@
 section.todos {
-  width: 100%;
+  width: 40%;
   display: flex;
   justify-content: center;
   background-color: #deb887;
-  height: 50%;
+  height: 100%;
 }
 
 section.todos h2 {
@@ -15,14 +15,13 @@ section.todos h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
 }
 
 .form-and-list form {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  height: 10%;
+  height: 5%;
 }
 
 .form-and-list form input {
@@ -46,7 +45,7 @@ section.todos h2 {
   width: 100%;
   padding: 0px;
   border: 1px solid lightgray;
-  height: 70%;
+  height: 80%;
   overflow-y: scroll;
 }
 
