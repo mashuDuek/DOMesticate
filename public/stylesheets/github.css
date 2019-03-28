@@ -15,6 +15,7 @@
     width: 80%;
     justify-content: space-between;
     height: 5%;
+    min-height: 5%;
 }
 
 .github .github-form button {

@@ -30,4 +30,7 @@ a:hover {
     width: 100%;
     background-color: #9E8BFE;
     height: 10%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
