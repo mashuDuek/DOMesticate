@@ -2,8 +2,8 @@
 
 # DOMesticate
 
-DOMesticate is a JavaScript libraryr used for DOM manipulation.
-The library is used for creating or removing HTML elements, toggle elements classes, traverse through parents or children of DOM elements, create/remove listeners, and send off ajax requests.
+DOMesticate is a JavaScript library used for DOM manipulation.
+The library is used for creating/removing DOM elements, add/remove/toggle elements classes, traverse elements, create/remove listeners, and make ajax reqs.
 
 ## API
 ### Core function
@@ -18,11 +18,10 @@ $domesticate can take string and function arguments. If the argument is a string
 ```empty()``` will reset the innerHTML of ```this```.
 #### append
 ```append()``` is used to add HTMLElements to the DOM.
-
 #### attr
 ```attr()``` is used as a getter or setter (depending on arguments passed in) of attributes on a DOM element.
 #### addClass & removeClass
-These two method serve to add a class to the list of classes, or remove all classes.
+These two methods serve to add a class to the list of classes, or remove all classes.
 #### remove
 ```remove()``` will remove the element from the DOM entirely. 
 
